@@ -1,0 +1,14 @@
+paths:
+    tests: code/fb-automation
+    log: tests/_output
+    data: tests/_output
+    support: tests/_support
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+    elasticsearch:
+      host: 192.168.68.28
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed

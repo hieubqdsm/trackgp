@@ -1,0 +1,8 @@
+class_name: WebGuy
+modules:
+    enabled: [WebDriver]
+    config:
+        WebDriver:
+          url: https://www.facebook.com
+          host: 192.168.68.28
+          browser: firefox

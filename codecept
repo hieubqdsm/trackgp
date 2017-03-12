@@ -1,0 +1,69 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Codeception CLI
+ */
+define('DRUPAL_ROOT', getcwd().'/code');
+$loader = require DRUPAL_ROOT.'/vendor/autoload.php';
+
+//require_once DRUPAL_ROOT.'/includes/bootstrap.inc';
+//drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+
+use Codeception\Application;
+
+
+// function not autoloaded in PHP, thus its a good place for them
+function codecept_debug($data)
+{
+    \Codeception\Util\Debug::debug($data);
+}
+
+function codecept_root_dir($appendPath = '')
+{
+    return \Codeception\Configuration::projectDir() . $appendPath;
+}
+
+function codecept_output_dir($appendPath = '')
+{
+    return \Codeception\Configuration::outputDir() . $appendPath;
+}
+
+function codecept_log_dir($appendPath = '')
+{
+    return \Codeception\Configuration::outputDir() . $appendPath;
+}
+
+function codecept_data_dir($appendPath = '')
+{
+    return \Codeception\Configuration::dataDir() . $appendPath;
+}
+
+function codecept_relative_path($path)
+{
+    return substr($path, strlen(codecept_root_dir()));
+}
+
+
+$app = new Application('Codeception', Codeception\Codecept::VERSION);
+$app->add(new Codeception\Command\Build('build'));
+$app->add(new Codeception\Command\Run('run'));
+$app->add(new Codeception\Command\Console('console'));
+$app->add(new Codeception\Command\Bootstrap('bootstrap'));
+$app->add(new Codeception\Command\GenerateCept('generate:cept'));
+$app->add(new Codeception\Command\GenerateCest('generate:cest'));
+$app->add(new Codeception\Command\GenerateTest('generate:test'));
+$app->add(new Codeception\Command\GeneratePhpUnit('generate:phpunit'));
+$app->add(new Codeception\Command\GenerateSuite('generate:suite'));
+$app->add(new Codeception\Command\GenerateHelper('generate:helper'));
+$app->add(new Codeception\Command\GenerateScenarios('generate:scenarios'));
+$app->add(new Codeception\Command\Clean('clean'));
+$app->add(new Codeception\Command\GenerateGroup('generate:groupobject'));
+$app->add(new Codeception\Command\GeneratePageObject('generate:pageobject'));
+$app->add(new Codeception\Command\GenerateStepObject('generate:stepobject'));
+$app->add(new Codeception\Command\GenerateEnvironment('generate:environment'));
+$app->add(new Codeception\Command\GenerateFeature('generate:feature'));
+$app->add(new Codeception\Command\GherkinSnippets('gherkin:snippets'));
+$app->add(new Codeception\Command\GherkinSteps('gherkin:steps'));
+$app->add(new Codeception\Command\DryRun('dry-run'));
+$app->registerCustomCommands();
+$app->run();

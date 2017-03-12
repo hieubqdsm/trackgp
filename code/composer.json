@@ -1,0 +1,19 @@
+{
+  "require-dev": {
+    "mockery/mockery": "^0.9",
+    "victory4me/codeception": "dev-master",
+    "victory4me/importdata":"dev-master",
+    "phpoffice/phpexcel":"^1.8"
+  },
+  "minimum-stability": "dev",
+  "scripts": {
+    "reload-testcases": [
+      "scripts/codeception-reload-testcase.sh"
+    ]
+  },
+  "autoload":{
+    "psr-4":{
+      "AccountSecurity\\": ""
+    }
+  }
+}

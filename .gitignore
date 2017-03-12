@@ -1,0 +1,8 @@
+/code/vendor
+/code/Classes
+/code/Examples
+/code/PHPExcel
+.idea/modules.xml
+.idea/trackgp.iml
+.idea/workspace.xml
+
