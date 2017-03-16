@@ -20,5 +20,6 @@ class AutoCheckListBookCest {
       $I->amOnPage('/groups/1615139492103847');
       $I->wait(3);
       $I->scrollToEnd();
+      $I->wait(4);
     }
 }
